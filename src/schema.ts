@@ -1,4 +1,4 @@
-import ArtistsTypeDefs from "./modules/artists/schema/type-defs";
+import ArtistsTypeDefs from "./modules/artists/artist.schema";
 import AlbumsTypeDefs from "./modules/albums/schema/type-defs";
 import BandsTypeDefs from "./modules/bands/schema/type-defs";
 import FavouritesTypeDefs from "./modules/favourites/schema/type-defs";

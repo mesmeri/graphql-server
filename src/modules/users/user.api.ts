@@ -8,7 +8,6 @@ class UserAPI extends RESTDataSource {
   }
 
   willSendRequest(request: RequestOptions) {
-    console.log({ token: this.context.Token });
     request.headers.set("Authorization", this.context.token);
   }
 
@@ -21,7 +20,7 @@ class UserAPI extends RESTDataSource {
   }
 
   async getUserById(id: string) {
-    return await this.get(`${encodeURIComponent(id)}`);
+    return await this.get(`/${encodeURIComponent(id)}`);
   }
 }
 
