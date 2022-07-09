@@ -3,13 +3,9 @@ import * as express from "express";
 import { DocumentNode } from "graphql";
 import "dotenv/config";
 
-import ArtistsTypeDefs from "./modules/artists/schema/type-defs";
-import AlbumsTypeDefs from "./modules/albums/schema/type-defs";
-import BandsTypeDefs from "./modules/bands/schema/type-defs";
-import FavouritesTypeDefs from "./modules/favourites/schema/type-defs";
-import GenresTypeDefs from "./modules/genres/schema/type-defs";
-import TracksTypeDefs from "./modules/tracks/schema/type-defs";
-import UsersTypeDefs from "./modules/users/schema/type-defs";
+import resolvers from "./resolvers";
+import UserAPI from "./modules/users/user.api";
+import typeDefs from "./schema";
 
 const PORT = process.env.PORT || 5000;
 
@@ -20,7 +16,18 @@ async function startApolloServer(typeDefs: DocumentNode[], resolvers: any) {
     resolvers,
     csrfPrevention: true,
     cache: "bounded",
+    dataSources: () => {
+      return {
+        userAPI: new UserAPI(),
+      };
+    },
+    context: ({ req }) => {
+      return {
+        token: req.headers.Authorization,
+      };
+    },
   });
+
   await server.start();
 
   server.applyMiddleware({ app });
@@ -33,14 +40,4 @@ async function startApolloServer(typeDefs: DocumentNode[], resolvers: any) {
   );
 }
 
-const typeDefs = [
-  ArtistsTypeDefs,
-  AlbumsTypeDefs,
-  BandsTypeDefs,
-  FavouritesTypeDefs,
-  GenresTypeDefs,
-  TracksTypeDefs,
-  UsersTypeDefs,
-];
-
-startApolloServer(typeDefs, {});
+startApolloServer(typeDefs, resolvers);
