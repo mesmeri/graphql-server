@@ -17,6 +17,11 @@ const typeDefs = gql`
     years: [String]
   }
 
+  type DeleteBandResponse {
+    acknowledged: Boolean
+    deletedCount: Int
+  }
+
   input MemberInput {
     artist: CreateArtistInput
     instrument: String
@@ -29,6 +34,25 @@ const typeDefs = gql`
     members: [MemberInput]
     website: String
     genres: [CreateGenreInput]
+  }
+
+  input UpdateBandInput {
+    name: String
+    origin: String
+    members: [MemberInput]
+    website: String
+    genres: [CreateGenreInput]
+  }
+
+  type Query {
+    band(id: ID): Band
+    bands: [Band]
+  }
+
+  type Mutation {
+    createBand(createBandInput: CreateBandInput): Band
+    updateBand(id: ID, updateBandInput: UpdateBandInput): Band
+    deleteBand(id: ID): DeleteBandResponse
   }
 `;
 

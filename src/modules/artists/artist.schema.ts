@@ -40,10 +40,6 @@ const typeDefs = gql`
     instruments: [String]
   }
 
-  input DeleteArtistInput {
-    _id: ID!
-  }
-
   type Query {
     artists: [Artist]
     artist(id: ID): Artist
