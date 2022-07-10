@@ -25,7 +25,7 @@ const typeDefs = gql`
     birthDate: String
     birthPlace: String
     country: String
-    bands: [CreateBandInput]
+    bandsIds: [String]
     instruments: [String]
   }
 
@@ -36,7 +36,7 @@ const typeDefs = gql`
     birthDate: String
     birthPlace: String
     country: String
-    bands: [CreateBandInput]
+    bandsIds: [String]
     instruments: [String]
   }
 

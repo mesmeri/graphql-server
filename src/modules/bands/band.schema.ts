@@ -33,7 +33,7 @@ const typeDefs = gql`
     origin: String
     members: [MemberInput]
     website: String
-    genres: [CreateGenreInput]
+    genresIds: [String]
   }
 
   input UpdateBandInput {
@@ -41,7 +41,7 @@ const typeDefs = gql`
     origin: String
     members: [MemberInput]
     website: String
-    genres: [CreateGenreInput]
+    genresIds: [CreateGenreInput]
   }
 
   type Query {

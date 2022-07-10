@@ -9,6 +9,7 @@ import UserAPI from "./modules/users/user.api";
 import ArtistAPI from "./modules/artists/artist.api";
 import GenreAPI from "./modules/genres/genre.api";
 import BandAPI from "./modules/bands/band.api";
+import TrackAPI from "./modules/tracks/track.api";
 
 const PORT = process.env.PORT || 5000;
 
@@ -25,6 +26,7 @@ async function startApolloServer(typeDefs: DocumentNode[], resolvers: any) {
         artistAPI: new ArtistAPI(),
         genreAPI: new GenreAPI(),
         bandAPI: new BandAPI(),
+        trackAPI: new TrackAPI(),
       };
     },
     context: ({ req }) => {
