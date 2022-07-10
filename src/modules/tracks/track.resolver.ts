@@ -14,6 +14,36 @@ const resolver = {
     },
   },
 
+  Track: {
+    async artists(parent: any, _: any, { dataSources }: any) {
+      const artistsData = await Promise.all(
+        parent.artistsIds.map((id: string) => {
+          return dataSources.artistAPI.getArtistById(id);
+        })
+      );
+
+      return artistsData;
+    },
+    async bands(parent: any, _: any, { dataSources }: any) {
+      const bandsData = await Promise.all(
+        parent.bandsIds.map((id: string) => {
+          return dataSources.bandAPI.getBandById(id);
+        })
+      );
+
+      return bandsData;
+    },
+    async genres(parent: any, _: any, { dataSources }: any) {
+      const genresData = await Promise.all(
+        parent.genresIds.map((id: string) => {
+          return dataSources.genreAPI.getGenreById(id);
+        })
+      );
+
+      return genresData;
+    },
+  },
+
   Mutation: {
     createTrack: async (
       _: any,

@@ -10,6 +10,10 @@ const typeDefs = gql`
     tracks: [Track]
     genres: [Genre]
     image: String
+    artistsIds: [String]
+    bandsIds: [String]
+    trackIds: [String]
+    genresIds: [String]
   }
 
   type DeleteAlbumResponse {

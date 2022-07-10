@@ -4,14 +4,15 @@ const typeDefs = gql`
   type Track {
     _id: ID!
     title: String!
-    artists: Artist
-    albums: [Album]
+    artists: [Artist]
+    album: Album
     bands: [Band]
-    duration: Int
-    released: Int
     genres: [Genre]
     bandsIds: [String]
-    name: String
+    genresIds: [String]
+    artistsIds: [String]
+    duration: Int
+    released: Int
   }
 
   type DeleteTrackResponse {
@@ -21,12 +22,11 @@ const typeDefs = gql`
 
   input CreateTrackInput {
     title: String
-    name: String
     description: String
     country: String
     year: Int
-    bandsIds: [String]
     duration: Int
+    bandsIds: [String]
     genresIds: [String]
   }
 
@@ -34,9 +34,9 @@ const typeDefs = gql`
     title: String
     albumId: String
     artistsIds: [String]
-    bandsIds: [String]
     duration: Int
     released: Int
+    bandsIds: [String]
     genresIds: [String]
   }
 

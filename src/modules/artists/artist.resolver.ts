@@ -14,6 +14,18 @@ const resolver = {
     },
   },
 
+  Artist: {
+    async bands(parent: any, _: any, { dataSources }: any) {
+      const bandsData = await Promise.all(
+        parent.bandsIds.map((id: string) => {
+          return dataSources.bandAPI.getBandById(id);
+        })
+      );
+
+      return bandsData;
+    },
+  },
+
   Mutation: {
     createArtist: async (
       _: any,

@@ -8,6 +8,7 @@ const typeDefs = gql`
     members: [Member]
     website: String
     genres: [Genre]
+    genresIds: [String]
   }
 
   type Member {

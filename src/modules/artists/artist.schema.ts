@@ -11,6 +11,7 @@ const typeDefs = gql`
     country: String
     bands: [Band]
     instruments: [String]
+    bandsIds: [String]
   }
 
   type DeleteArtistResponse {
