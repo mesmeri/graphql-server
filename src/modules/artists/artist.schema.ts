@@ -25,12 +25,8 @@ const typeDefs = gql`
     birthDate: String
     birthPlace: String
     country: String
-    bands: [BandInput]
+    bands: [CreateBandInput]
     instruments: [String]
-  }
-
-  input DeleteArtistInput {
-    _id: ID!
   }
 
   input UpdateArtistInput {
@@ -40,8 +36,12 @@ const typeDefs = gql`
     birthDate: String
     birthPlace: String
     country: String
-    bands: [BandInput]
+    bands: [CreateBandInput]
     instruments: [String]
+  }
+
+  input DeleteArtistInput {
+    _id: ID!
   }
 
   type Query {
@@ -51,11 +51,8 @@ const typeDefs = gql`
 
   type Mutation {
     createArtist(createArtistInput: CreateArtistInput): Artist
-    deleteArtist(
-      id: ID
-      deleteArtistInput: DeleteArtistInput
-    ): DeleteArtistResponse
     updateArtist(id: ID, updateArtistInput: UpdateArtistInput): Artist
+    deleteArtist(id: ID): DeleteArtistResponse
   }
 `;
 

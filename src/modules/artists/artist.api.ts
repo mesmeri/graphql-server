@@ -1,5 +1,6 @@
-import { CreateArtistDto, UpdateArtistDto } from "./artist.types";
 import { RequestOptions, RESTDataSource } from "apollo-datasource-rest";
+
+import { CreateArtistDto, UpdateArtistDto } from "./artist.types";
 
 class ArtistAPI extends RESTDataSource {
   constructor() {

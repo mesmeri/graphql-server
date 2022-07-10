@@ -23,12 +23,12 @@ const typeDefs = gql`
     years: [String]
   }
 
-  input BandInput {
+  input CreateBandInput {
     name: String
     origin: String
     members: [MemberInput]
     website: String
-    genres: [GenreInput]
+    genres: [CreateGenreInput]
   }
 `;
 
